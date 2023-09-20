@@ -7,7 +7,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        "pry-col": "#fe34b9",
         "background-col": "#150E28",
         "sec-col": "#903AFF",
         "tet-col": "#D434FE",
