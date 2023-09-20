@@ -7,3 +7,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+@layer utilities {
+  .gradient {
+    background: linear-gradient(
+      90deg,
+      hsla(282, 100%, 61%, 1) 0%,
+      hsla(320, 99%, 60%, 1) 100%
+    );
+  }
+}
