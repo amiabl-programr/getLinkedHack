@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@layer base {
+  h1 {
+    @apply font-bold text-[32px] lg:text-[60px] xl:text-[80px];
+  }
+  h2 {
+    @apply font-bold  text-xl lg:text-[32px];
+  }
+}
+@layer utilities {
+  .gradient {
+    background: linear-gradient(
+      90deg,
+      hsla(282, 100%, 61%, 1) 0%,
+      hsla(320, 99%, 60%, 1) 100%
+    );
+  }
+
+  .border-gradient {
+    border: 1px solid red;
+    /* color: linear-gradient(90deg, #903aff, #ff26b9); */
+  }
+}
