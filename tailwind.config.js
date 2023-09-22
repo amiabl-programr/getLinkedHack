@@ -11,7 +11,10 @@ export default {
         "sec-col": "#903AFF",
         "tet-col": "#D434FE",
 
-      }
+      },
+      fontFamily: {
+        clashDisplay: ["ClashDisplay-Variable", "sans-serif"],
+      },
     },
   },
   plugins: [],
