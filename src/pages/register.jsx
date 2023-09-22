@@ -3,19 +3,19 @@ import { useState } from "react";
 import register_img from "../assets/register-img.png";
 import Header from "../components/header";
 
+const initialValues = {
+  email: "sample@eexample.com",
+  phone_number: "0903322445533",
+  team_name: "Space Explore",
+  group_size: 10,
+  project_topic: "Web server propagation",
+  category: 1,
+  privacy_poclicy_accepted: true,
+};
+
 function Register() {
   const [input, setInput] = useState(initialValues);
   const [errors, setErrors] = useState({});
-
-  const initialValues = {
-    email: "sample@eexample.com",
-    phone_number: "0903322445533",
-    team_name: "Space Explore",
-    group_size: 10,
-    project_topic: "Web server propagation",
-    category: 1,
-    privacy_poclicy_accepted: true,
-  };
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -64,8 +64,6 @@ function Register() {
       setErrors(validationErrors);
       return;
     }
-
-    
   };
   return (
     <>
