@@ -8,6 +8,7 @@ import blueEffect from "./assets/blue-effect.png";
 import big_idea from "./assets/The big idea.png";
 import rules from "./assets/rules.png";
 import judging_criteria from "./assets/judging.png";
+import faq from "./assets/faq-img.png";
 
 import "./App.css";
 
@@ -16,7 +17,7 @@ function App() {
     <>
       <Header />
       {/* hero */}
-      <div className=" bg-background-col text-white">
+      <div className=" bg-background-col text-white" id="hero">
         <div className="relative max-w-[1149px] mx-auto">
           <div className=" absolute pr-2 lg:pr-[55px] right-0">
             <p className="font-bold text-base italic">
@@ -182,11 +183,16 @@ function App() {
         className="bg-[#140D27] flex flex-col lg:flex-row items-center justify-center
         text-white text-center gap-[58px] lg:gap-[109px] pt-[29px] pb-[75px]
          lg:pt-[62px] lg:pb-[78px]"
+        id="faq"
       >
         <div className="max-w-[535px] lg:text-left">
           <div>
-            <h2 className="">Judging Criteria</h2>
-            <h2 className=" text-tet-col">Key attributes</h2>
+            <h2 className="">Frequently Ask</h2>
+            <h2 className=" text-tet-col">Question</h2>
+            <p>
+              We got answers to the questions that you might want to ask about
+              getlinked Hackathon 1.0
+            </p>
           </div>
           <div className="mt-4 lg:mt-[21px] flex flex-col gap-3 lg:gap-6">
             <p>
@@ -226,7 +232,7 @@ function App() {
         </div>
 
         <div>
-          <img src={judging_criteria} alt="" />
+          <img src={faq} alt="" />
         </div>
       </section>
       <Footer />
