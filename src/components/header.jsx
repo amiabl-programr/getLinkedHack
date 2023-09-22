@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Logo from "../assets/getlinkedlogo.png";
 import menu from "../assets/menu.png";
-import Button from "./button";
 import { Link } from "react-router-dom";
 
 function Header() {
@@ -13,14 +12,20 @@ function Header() {
        text-white pt-[34px] lg:pt-[63px] pb-4 lg:pb-[25px] relative"
       >
         <div>
-          <img src={Logo} alt="logo" />
+          <Link to="/">
+            <img src={Logo} alt="logo" />
+          </Link>
         </div>
         <div className=" hidden lg:flex gap-14 items-center rounded">
           <Link>Timeline</Link>
           <Link>Overview</Link>
           <Link>FAQs</Link>
           <Link to="/contact">Contact</Link>
-          <Button />
+          <Link to="/register">
+            <button className=" gradient text-white py-4 px-[52px]">
+              Register
+            </button>
+          </Link>
         </div>
 
         <div className="lg:hidden">
@@ -49,7 +54,11 @@ function Header() {
               <p>Overview</p>
               <p>FAQs</p>
               <Link to="/contact">Contact</Link>
-              <Button />
+              <Link to="/register">
+                <button className=" gradient text-white py-4 px-[52px]">
+                  Register
+                </button>
+              </Link>
             </div>
           </div>
         )}

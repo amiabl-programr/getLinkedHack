@@ -46,6 +46,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
 @layer base {
@@ -54,6 +55,19 @@
   }
   h2 {
     @apply font-bold  text-xl lg:text-[32px] font-clashDisplay;
+  }
+  /* input {
+    @apply w-[263px];
+  } */
+  input,
+  textarea,
+  select,
+  option {
+    @apply bg-transparent border-white border-[1px];
+  }
+  input,
+  select {
+    @apply py-[10px] px-[27px] rounded;
   }
 }
 @layer utilities {
