@@ -138,6 +138,7 @@ function Contact() {
                     className=" w-full"
                   />
                 </label>
+                <div className=" text-red-500">{errors && errors.name}</div>
               </div>
 
               <div>
@@ -150,6 +151,7 @@ function Contact() {
                     className=" w-full"
                     placeholder="Email"
                   />
+                  <div className=" text-red-500">{errors && errors.email}</div>
                 </label>
               </div>
 
@@ -163,6 +165,7 @@ function Contact() {
                     className=" w-full"
                     placeholder="Phone number"
                   />
+                  <div className=" text-red-500">{errors && errors.phone}</div>
                 </label>
               </div>
 
@@ -177,6 +180,9 @@ function Contact() {
                   >
                     Message
                   </textarea>
+                  <div className=" text-red-500">
+                    {errors && errors.message}
+                  </div>
                 </label>
               </div>
               <div className="text-center">
