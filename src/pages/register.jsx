@@ -16,6 +16,8 @@ const initialValues = {
 function Register() {
   const [input, setInput] = useState(initialValues);
   const [errors, setErrors] = useState({});
+  const [categoryError, setCategoryError] = useState("");
+  const [groupSizeError, setGroupSizeError] = useState("");
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -28,6 +30,17 @@ function Register() {
     const { name, checked } = e.target;
     setInput({ ...input, [name]: checked });
     setErrors({ ...errors, [name]: "" });
+  }
+
+  function handleDropdownChange(e) {
+    const { name, value } = e.target;
+    setInput({ ...input, [name]: value });
+    // Clear any previous errors for the dropdown
+    if (name === "category") {
+      setCategoryError("");
+    } else if (name === "group_size") {
+      setGroupSizeError("");
+    }
   }
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,7 +62,7 @@ function Register() {
       team_name,
       privacy_poclicy_accepted,
       project_topic,
-
+      group_size,
       category,
     } = input;
     console.log(category);
@@ -73,6 +86,14 @@ function Register() {
       validationErrors.phone_number = "Please enter your phone number.";
     } else if (!validatePhone(phone_number)) {
       validationErrors.phone = "Please enter a valid phone number.";
+    }
+    // Validate the dropdowns
+    if (!category) {
+      setCategoryError("Please select a category.");
+    }
+
+    if (!group_size) {
+      setGroupSizeError("Please select a group size.");
     }
 
     if (!privacy_poclicy_accepted) {
@@ -159,6 +180,9 @@ function Register() {
                   onChange={handleChange}
                   value={input.team_name}
                 />
+                <div className=" text-red-500">
+                  {errors && errors.team_name}
+                </div>
               </div>
               <div className="flex flex-col">
                 <label htmlFor="phone">Phone</label>
@@ -169,6 +193,9 @@ function Register() {
                   onChange={handleChange}
                   value={input.phone_number}
                 />
+                <div className=" text-red-500">
+                  {errors && errors.phone_number}
+                </div>
               </div>
             </div>
 
@@ -186,6 +213,7 @@ function Register() {
                   onChange={handleChange}
                   value={input.email}
                 />
+                <div className=" text-red-500">{errors && errors.email}</div>
               </div>
               <div className="flex flex-col">
                 <label htmlFor="project-topic">Project Topic</label>
@@ -196,6 +224,9 @@ function Register() {
                   onChange={handleChange}
                   value={input.project_topic}
                 />
+                <div className=" text-red-500">
+                  {errors && errors.project_topic}
+                </div>
               </div>
             </div>
 
@@ -207,7 +238,7 @@ function Register() {
                   name="category"
                   id="category"
                   placeholder="Select your Category"
-                  onChange={handleChange}
+                  onChange={handleDropdownChange}
                   value={input.category}
                 >
                   <option value="">Select your category</option>
@@ -215,6 +246,9 @@ function Register() {
                   <option value="2">2</option>
                   <option value="3">3</option>
                 </select>
+                {categoryError && (
+                  <p className="text-red-500">{categoryError}</p>
+                )}
               </div>
 
               <div className="flex flex-col ml-auto lg:flex-1  ">
@@ -223,7 +257,7 @@ function Register() {
                   name="group_size"
                   id="group-size"
                   placeholder="Select"
-                  onChange={handleChange}
+                  onChange={handleDropdownChange}
                   value={input.group_size}
                 >
                   <option value="" defaultValue>
@@ -233,6 +267,9 @@ function Register() {
                   <option value="10">10</option>
                   <option value="15">15</option>
                 </select>
+                {groupSizeError && (
+                  <p className="text-red-500">{groupSizeError}</p>
+                )}
               </div>
 
               <div></div>
