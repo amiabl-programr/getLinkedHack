@@ -48,6 +48,10 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
+body {
+  padding: 0px 20px;
+  background-color: #150e28;
+}
 
 @layer base {
   h1 {
@@ -89,5 +93,21 @@
   .border-gradient {
     border: 1px solid red;
     /* color: linear-gradient(90deg, #903aff, #ff26b9); */
+  }
+
+  .silver {
+    background-color: rgba(212, 52, 254, 0.12);
+    border-radius: 8px;
+    border: 1px solid #d434fe;
+  }
+  .gold {
+    border-radius: 8px;
+    border: 1px solid #903aff;
+    background: rgba(144, 58, 255, 0.12);
+  }
+  .bronze {
+    border-radius: 8px;
+    border: 1px solid #d434fe;
+    background: rgba(212, 52, 254, 0.12);
   }
 }

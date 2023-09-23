@@ -10,12 +10,12 @@ import linkedin from "../assets/linkedin.png";
 function Footer() {
   return (
     <>
-      <footer className="bg-background-col text-white">
+      <footer className="bg-[#100B20] text-white pt-[51px] lg:pt-20 font-normal text-xs">
         <div className="grid place-items-center">
           <div className="flex flex-col lg:flex-row items-start justify-center gap-8">
-            <div className=" w-[217px] lg:w-[412px]">
+            <div className=" w-[217px] lg:w-[412px]  ">
               <img src={Logo} alt="" />
-              <p>
+              <p className="mt-3">
                 Getlinked Tech Hackathon is a technology innovation program
                 established by a group of organizations with the aim of
                 showcasing young and talented individuals in the field of
@@ -31,28 +31,32 @@ function Footer() {
 
             {/* useful links */}
             <div className="flex flex-col">
-              <p className=" font-semibold text-sm text-tet-col">
+              <p className=" font-semibold text-sm text-tet-col mb-4">
                 Useful Links
               </p>
-              <a href="#hero">Overview</a>
-              <a href="#">Timeline</a>
-              <a href="#faq">FAQs</a>
-              <Link to="/register">Register</Link>
-              <div className="flex gap-4">
-                <p>Follow us</p>
-                <div className="flex items-center gap-5">
-                  <img src={Insta} alt="" />
-                  <img src={Twitter} alt="" />
-                  <img src={Fb} alt="" />
-                  <img src={linkedin} alt="" />
+              <div className="flex flex-col gap-3">
+                <a href="#hero">Overview</a>
+                <a href="#">Timeline</a>
+                <a href="#faq">FAQs</a>
+                <Link to="/register">Register</Link>
+                <div className="flex gap-4">
+                  <p>Follow us</p>
+                  <div className="flex items-center gap-5">
+                    <img src={Insta} alt="" />
+                    <img src={Twitter} alt="" />
+                    <img src={Fb} alt="" />
+                    <img src={linkedin} alt="" />
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Contact Us */}
             <div>
-              <p className=" font-semibold text-sm text-tet-col">Contact Us</p>
-              <div className="flex items-center justify-start gap-4">
+              <p className=" font-semibold text-sm text-tet-col mb-4">
+                Contact Us
+              </p>
+              <div className="flex items-center justify-start gap-4 mb-3">
                 <img src={Phone} alt="" />
                 <p>+234 6707653444</p>
               </div>
