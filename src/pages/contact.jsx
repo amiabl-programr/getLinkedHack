@@ -1,6 +1,10 @@
 import { useState } from "react";
 import Header from "../components/header";
 import axios from "axios";
+import Twitter from "../assets/twitter.png";
+import Fb from "../assets/fb.png";
+import Insta from "../assets/instagram.png";
+import linkedin from "../assets/linkedin.png";
 
 const initialValues = {
   name: "",
@@ -90,60 +94,100 @@ function Contact() {
   return (
     <>
       <Header />
-      {/* form */}
-      <div className="bg-background-col text-white">
-        <p>Questions or need assistance? Let us know about it</p>
-        <p>Email us below to any question related to our event</p>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>
-              <input
-                name="name"
-                type="text"
-                placeholder="First Name"
-                onChange={handleChange}
-                value={input.name}
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              <input
-                type="email"
-                name="email"
-                value={input.email}
-                onChange={handleChange}
-                placeholder="Email"
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              <input
-                name="phone"
-                type="tel"
-                value={input.phone}
-                onChange={handleChange}
-                placeholder="Phone number"
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              <textarea
-                value={input.message}
-                onChange={handleChange}
-                name="message"
-                placeholder="Message"
-              >
-                Message
-              </textarea>
-            </label>
-          </div>
+      <section
+        className="flex justify-center items-center lg:gap-20 xl:gap-56
+       bg-background-col text-white pt-16 pb-14 lg:pt-36 lg:pb-[115px]"
+      >
+        <div className="hidden lg:block w-[272px]">
+          <h3 className="text-[32px] text-tet-col">Get in touch</h3>
+          <ul className=" mt-4 flex flex-col gap-4">
+            <li>Contact Information</li>
+            <li>27,Alara Street Yaba 100012 Lagos State</li>
+            <li>Call Us : 07067981819</li>
+            <li>We are open from Monday-Friday 08:00am - 05:00pm</li>
+          </ul>
 
-          <button>Submit</button>
-        </form>
-      </div>
+          <div className=" mt-8 ">
+            <p className=" text-tet-col ">Share on</p>
+            <div className="flex items-center gap-5 pt-[14px]">
+              <img src={Insta} alt="" />
+              <img src={Twitter} alt="" />
+              <img src={Fb} alt="" />
+              <img src={linkedin} alt="" />
+            </div>
+          </div>
+        </div>
+        {/* form */}
+        <div className="bg-glass lg:pt-[75px] lg:px-[92px] lg:pb-[67px]">
+          <h3 className=" text-tet-col w-[195px] lg:w-[301px]">
+            Questions or need assistance? Let us know about it
+          </h3>
+          <p className=" mt-6 mb-[30px]">
+            Email us below to any question related to our event
+          </p>
+          <div>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5 ">
+              <div>
+                <label>
+                  <input
+                    name="name"
+                    type="text"
+                    placeholder="First Name"
+                    onChange={handleChange}
+                    value={input.name}
+                    className=" w-full"
+                  />
+                </label>
+              </div>
+
+              <div>
+                <label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={input.email}
+                    onChange={handleChange}
+                    className=" w-full"
+                    placeholder="Email"
+                  />
+                </label>
+              </div>
+
+              <div>
+                <label>
+                  <input
+                    name="phone"
+                    type="tel"
+                    value={input.phone}
+                    onChange={handleChange}
+                    className=" w-full"
+                    placeholder="Phone number"
+                  />
+                </label>
+              </div>
+
+              <div>
+                <label>
+                  <textarea
+                    value={input.message}
+                    onChange={handleChange}
+                    className=" w-full "
+                    name="message"
+                    placeholder="Message"
+                  >
+                    Message
+                  </textarea>
+                </label>
+              </div>
+              <div className="text-center">
+                <button className="gradient py-[17px] px-[57px] rounded">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

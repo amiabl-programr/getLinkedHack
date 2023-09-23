@@ -70,13 +70,18 @@ function Register() {
       <Header />
       <div
         className=" bg-background-col text-white flex flex-col lg:flex-row
-       items-center justify-center  px-4 lg:px-0"
+       items-center justify-center  px-4 lg:px-0 lg:pt-[68px] lg:pb-[57px]
+       py-6 lg:py-0 "
       >
-        <img src={register_img} width={500} alt="" />
+        <img
+          src={register_img}
+          className=" w-52 lg:w-[400px] xl:w-[550px] 2xl:w-[600px]"
+          alt=""
+        />
 
-        <div>
+        <div className=" bg-transparent lg:bg-glass lg:pt-[75px] lg:px-7 xl:px-[92px] lg:pb-[67px]">
           <p
-            className="text-tet-col font-bold font-clashDisplay 
+            className="text-tet-col font-semibold font-clashDisplay 
           text-[15px] lg:text-[32px]"
           >
             Register
@@ -84,21 +89,27 @@ function Register() {
           <div>
             <p className="font-normal text-sm">Be part of this movement!</p>
           </div>
-          <p>CREATE YOUR ACCOUNT</p>
+          <p className=" font-normal text-xl lg:text-2xl mt-[7px] mb-[23px] lg:mt-[19px] lg:mb-[33px]">
+            CREATE YOUR ACCOUNT
+          </p>
 
-          <form className="">
+          <form className="" onSubmit={handleSubmit}>
             {/* first row on desktop */}
-            <div className="flex flex-col lg:flex-row">
+            <div
+              className="flex flex-col lg:flex-row justify-between
+            gap-[18px]"
+            >
               <div className="flex flex-col">
                 <label htmlFor="team-name">Team&apos;s Name</label>
                 <input
                   type="text"
                   name="team-name"
                   placeholder="Enter the name of your group"
+                  onChange={handleChange}
                 />
               </div>
               <div className="flex flex-col">
-                <label htmlFor="phone">Team&apos;s Name</label>
+                <label htmlFor="phone">Phone</label>
                 <input
                   type="tel"
                   name="phone"
@@ -108,7 +119,10 @@ function Register() {
             </div>
 
             {/* second row on desktop */}
-            <div className="flex flex-col lg:flex-row">
+            <div
+              className="flex flex-col lg:flex-row justify-between
+            gap-[18px] lg:my-[29px]"
+            >
               <div className="flex flex-col">
                 <label htmlFor="email">Email</label>
                 <input
@@ -128,8 +142,8 @@ function Register() {
             </div>
 
             {/* third row */}
-            <div className="flex flex-row">
-              <div className="flex flex-col w-40">
+            <div className="flex flex-row ">
+              <div className="flex flex-col w-40 flex-1 mr-[19px]">
                 <label htmlFor="category">Category</label>
                 <select
                   name="category"
@@ -145,7 +159,7 @@ function Register() {
                 </select>
               </div>
 
-              <div className="flex flex-col ml-auto ">
+              <div className="flex flex-col ml-auto lg:flex-1  ">
                 <label htmlFor="group-size">Group Size</label>
                 <select
                   name="group-size"
@@ -164,7 +178,7 @@ function Register() {
               <div></div>
             </div>
 
-            <p className="italic text-tet-col font-normal">
+            <p className="italic text-tet-col font-normal mt-6 mb-4">
               Please review your registration details before submitting
             </p>
             <div>
@@ -174,8 +188,10 @@ function Register() {
               </label>
             </div>
 
-            <div className="grid place-items-center">
-              <button className="gradient text-white">Register Now</button>
+            <div className="grid place-items-center lg:place-items-stretch mt-5">
+              <button className="gradient text-white py-[17px] px-[57px]">
+                Register Now
+              </button>
             </div>
           </form>
         </div>
