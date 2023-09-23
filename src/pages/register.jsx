@@ -1,15 +1,15 @@
-// import axios from "axios";
+import axios from "axios";
 import { useState } from "react";
 import register_img from "../assets/register-img.png";
 import Header from "../components/header";
 
 const initialValues = {
-  email: "sample@eexample.com",
-  phone_number: "0903322445533",
-  team_name: "Space Explore",
-  group_size: 10,
-  project_topic: "Web server propagation",
-  category: 1,
+  email: "",
+  phone_number: "",
+  team_name: "",
+  category: "",
+  project_topic: "",
+  group_size: "",
   privacy_poclicy_accepted: true,
 };
 
@@ -23,6 +23,12 @@ function Register() {
     setErrors({ ...errors, [name]: "" });
   }
 
+  // Function to toggle the checkbox state
+  function handleCheckboxChange(e) {
+    const { name, checked } = e.target;
+    setInput({ ...input, [name]: checked });
+    setErrors({ ...errors, [name]: "" });
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -37,11 +43,24 @@ function Register() {
     };
 
     // Validate form fields
-    const { name, email, phone, message } = input;
+    const {
+      email,
+      phone_number,
+      team_name,
+      privacy_poclicy_accepted,
+      project_topic,
+
+      category,
+    } = input;
+    console.log(category);
+    console.log(privacy_poclicy_accepted);
     const validationErrors = {};
 
-    if (!name) {
-      validationErrors.name = "Please enter your name.";
+    if (!team_name) {
+      validationErrors.team_name = "Please enter your team name.";
+    }
+    if (!project_topic) {
+      validationErrors.project_topic = "Please enter your project topic.";
     }
 
     if (!email) {
@@ -50,21 +69,53 @@ function Register() {
       validationErrors.email = "Please enter a valid email address.";
     }
 
-    if (!phone) {
-      validationErrors.phone = "Please enter your phone number.";
-    } else if (!validatePhone(phone)) {
+    if (!phone_number) {
+      validationErrors.phone_number = "Please enter your phone number.";
+    } else if (!validatePhone(phone_number)) {
       validationErrors.phone = "Please enter a valid phone number.";
     }
 
-    if (!message) {
-      validationErrors.message = "Please enter a message.";
+    if (!privacy_poclicy_accepted) {
+      validationErrors.privacy_poclicy_accepted = "Please check the box.";
     }
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
+    if (privacy_poclicy_accepted) {
+      // Only submit the form if the checkbox is checked
+      var data = JSON.stringify({
+        email: input.email,
+        phone_number: input.phone_number,
+        team_name: input.team_name,
+        group_size: input.group_size,
+        project_topic: input.project_topic,
+        category: input.category,
+        privacy_poclicy_accepted: input.privacy_poclicy_accepted,
+      });
+
+      var config = {
+        method: "post",
+        maxBodyLength: Infinity,
+        url: "https://backend.getlinked.ai/hackathon/registration",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      axios(config)
+        .then(function (response) {
+          console.log(JSON.stringify(response.data));
+          console.log("sent");
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   };
+
   return (
     <>
       <Header />
@@ -103,17 +154,20 @@ function Register() {
                 <label htmlFor="team-name">Team&apos;s Name</label>
                 <input
                   type="text"
-                  name="team-name"
+                  name="team_name"
                   placeholder="Enter the name of your group"
                   onChange={handleChange}
+                  value={input.team_name}
                 />
               </div>
               <div className="flex flex-col">
                 <label htmlFor="phone">Phone</label>
                 <input
                   type="tel"
-                  name="phone"
+                  name="phone_number"
                   placeholder="Enter your phone number"
+                  onChange={handleChange}
+                  value={input.phone_number}
                 />
               </div>
             </div>
@@ -129,14 +183,18 @@ function Register() {
                   type="email"
                   name="email"
                   placeholder="Enter your email address"
+                  onChange={handleChange}
+                  value={input.email}
                 />
               </div>
               <div className="flex flex-col">
                 <label htmlFor="project-topic">Project Topic</label>
                 <input
-                  type="name"
-                  name="project-topic"
+                  type="text"
+                  name="project_topic"
                   placeholder="What is your group project topic"
+                  onChange={handleChange}
+                  value={input.project_topic}
                 />
               </div>
             </div>
@@ -147,31 +205,33 @@ function Register() {
                 <label htmlFor="category">Category</label>
                 <select
                   name="category"
-                  id=""
+                  id="category"
                   placeholder="Select your Category"
+                  onChange={handleChange}
+                  value={input.category}
                 >
-                  <option value="" disabled selected hidden>
-                    Select your category
-                  </option>
+                  <option value="">Select your category</option>
                   <option value="1">1</option>
-                  <option value="1">2</option>
-                  <option value="1">3</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
                 </select>
               </div>
 
               <div className="flex flex-col ml-auto lg:flex-1  ">
-                <label htmlFor="group-size">Group Size</label>
+                <label htmlFor="group">Group Size</label>
                 <select
-                  name="group-size"
-                  id=""
-                  placeholder="Select your Category"
+                  name="group_size"
+                  id="group-size"
+                  placeholder="Select"
+                  onChange={handleChange}
+                  value={input.group_size}
                 >
-                  <option value="" disabled selected hidden>
+                  <option value="" defaultValue>
                     Select
                   </option>
-                  <option value="1">1</option>
-                  <option value="1">2</option>
-                  <option value="1">3</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
                 </select>
               </div>
 
@@ -182,10 +242,19 @@ function Register() {
               Please review your registration details before submitting
             </p>
             <div>
-              <input type="checkbox" name="tos" id="tos" />
+              <input
+                type="checkbox"
+                name="privacy_poclicy_accepted"
+                id="privacy_poclicy_accepted"
+                checked={input.privacy_poclicy_accepted}
+                onChange={handleCheckboxChange}
+              />
               <label htmlFor="tos">
                 I agreed with the event terms and conditions and privacy policy
               </label>
+              <div className=" text-red-600">
+                {errors && errors.privacy_poclicy_accepted}
+              </div>
             </div>
 
             <div className="grid place-items-center lg:place-items-stretch mt-5">
