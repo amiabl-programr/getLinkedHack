@@ -10,6 +10,7 @@ export default {
         "background-col": "#150E28",
         "sec-col": "#903AFF",
         "tet-col": "#D434FE",
+        "glass": "rgba(255, 255, 255, 0.03)",
 
       },
       fontFamily: {
