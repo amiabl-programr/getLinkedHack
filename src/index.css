@@ -56,6 +56,9 @@
   h2 {
     @apply font-bold  text-xl lg:text-[32px] font-clashDisplay;
   }
+  h3 {
+    @apply font-clashDisplay font-semibold text-xl;
+  }
   /* input {
     @apply w-[263px];
   } */
@@ -66,8 +69,12 @@
     @apply bg-transparent border-white border-[1px];
   }
   input,
-  select {
+  select,
+  textarea {
     @apply py-[10px] px-[27px] rounded;
+  }
+  select * {
+    @apply bg-background-col text-white;
   }
 }
 @layer utilities {
